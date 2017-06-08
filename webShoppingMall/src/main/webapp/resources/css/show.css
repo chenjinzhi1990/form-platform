@@ -1,0 +1,9 @@
+.show-div1 {
+	position: absolute;
+ 	left: 30%;
+ 	top: 10%;
+	width:200px;
+	height:100px;
+	margin-left:-100px;
+	margin-top:-50px;
+}
