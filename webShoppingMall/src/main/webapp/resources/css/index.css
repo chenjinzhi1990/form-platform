@@ -1,0 +1,153 @@
+body .layui-tree-skin-shihuang .layui-tree-branch {
+	color: #EDCA50;
+}
+
+#context {
+	
+	position: relative;
+	float: left;
+	top: 0px;
+	left: 222px;
+	border: 1px solid #ddd;
+	width: 500px;
+	height: 100%;
+	background-color: red;
+	
+}
+
+#left {
+	/* 	border: 1px solid #ddd; */
+	float: left;
+	position: fixed;
+	margin-top: 35px;
+}
+
+#col1 li {
+	/* 	border: 1px solid #ddd; */
+	width: 140px;
+	height: 35px;
+	text-align: center;
+}
+
+#middle {
+/* 		border: 1px solid #ddd; */
+	width: 750px;
+	min-height: 550px;
+	margin-top: 35px;
+	float: left;
+	margin-left: 300px;
+}
+#right{
+	border: 1px solid #f6a828;
+	position: fixed;
+	margin-left: 1100px;
+	width: 230px;
+	height: 500px;
+	margin-top: 35px;
+	margin-right: 20px;
+	
+	
+}
+#attrtitle{
+	position: fixed;
+	margin-top: 0px;
+	width: 230px;
+	height: 25px;
+	background-color: #f6a828;
+	border: 1px solid #e78f08;
+}
+
+#products {
+	float: left;
+	width: 200px;
+	height:300px;
+	margin-left: 20px;
+	margin-right: 2em;
+}
+
+h1 {
+	padding: .2em;
+	margin: 0;
+}
+
+#cart {
+	width: 750px;
+	float: left;
+	margin-top: 1em;
+}
+/* 定义列表样式，以便最大化 droppable */
+#cart ol {
+	margin: 0;
+	padding: 1em 0 1em 3em;
+	height: 550px;
+	overflow:auto;
+
+}
+#cart ol li {
+	margin: 10px
+}
+
+.dashedbor{
+	border:1px dashed #000;
+	cursor:pointer;
+}
+
+#buttons{
+
+}
+.color1{
+	background-color:#fddabb;
+	
+}
+.color2{
+	background-color: #eee;
+}
+.controlattr:HOVER{
+	   background-color: #ffca95;
+	   
+}
+.formattr:HOVER{
+	 background-color: #ffca95;
+}
+.er{ border-bottom: 3px solid #000000;}
+#formcontro ul li div{
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	padding-top:3px;
+	border-bottom: 1px solid #f6a828;
+}
+ 	
+#formTemplate ul li .Template{
+	 width: 130px;
+	 height: 170px;
+	 border: 1px solid #f6a828;
+	 
+}
+#formTemplate ul li div div{
+	 width: 130px;
+	 height: 20px;
+	 text-align: center;
+	 border-bottom: 1px solid #f6a828;
+}
+#formTemplate{
+	 border: 1px solid #f6a828;
+}
+#formcontro{
+	 border: 1px solid #f6a828;
+}
+#formTemplate ul li{
+	margin: 20px;
+	margin-left: 35px;
+}
+
+/* #contorli li{ */
+/* 	display: inline-block; */
+/* } */
+
+
+
+
+
+
+

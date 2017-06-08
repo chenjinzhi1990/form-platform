@@ -1,0 +1,55 @@
+body{
+	background:url(../images/lghtmesh.png); 
+}
+#container{
+	width: 70%;
+	height: 550px;
+	border: 1px solid #ddd; 
+	margin-left: 180px;
+	margin-top: 50px;
+	background-color: white;
+}
+#tree{
+	width: 200px;
+	height: 550px;
+	border-right: 1px solid #ddd; 
+	overflow: auto;
+	background-color: #ebebeb;
+	float: left;
+}
+#formnamelist li div{
+	text-align: center;
+	font-size: 16px;
+	width: 200px;
+	height: 35px;
+	padding-top:15px;
+	border-bottom: 1px solid #ddd;
+} 
+
+
+
+#formnamelist li div:HOVER {
+	background-color: #dddddd;
+	cursor:pointer;
+}
+#formlist{
+	margin-top:30px;
+	width: 690px;
+	height: 500px;
+	float: left;
+	margin-left: 50px;
+	
+}
+#formlist ul li div{
+	width: 690px;
+	height: 50px;
+	border: 1px solid #ddd;
+	margin-bottom: 20px;  
+}
+
+.gear{
+	margin-left: 50px;
+}
+
+
+

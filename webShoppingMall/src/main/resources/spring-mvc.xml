@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- 配置数据库连接参数一级连接池 -->
+	<!-- 从配置文件中读取连接诶的信息 -->
+	<util:properties id="config" location="classpath:mysql.properties" />
+	<!-- 配置连接池 -->
+	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="#{config.driverClassName}" />
+		<property name="url" value="#{config.url}" />
+		<property name="username" value="#{config.username}" />
+<!-- 		<property name="password" value="#{config.password}" /> -->
+	</bean>
+
+
+
+	<!-- 配置SqlSessionFactory -->
+	<bean id="ssfb" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 注入连接池，不在使用mybatis自带的连接池 是使用spring配置的连接池 -->
+		<property name="dataSource" ref="ds"></property>
+		<!-- 映射文件的位置 -->
+		<property name="mapperLocations" value="classpath:mapper/*.xml" />
+	</bean>
+
+	<!-- 配置MapperScannerConfigurer 他会负责扫描指定包下面的所有的Mapper映射器 然后生成符合这些接口要求的对象（其实即使调用session的getMapper方法）自动帮我们实现 
+		这个接口 另外还会将这些对象添加spring容器里面（默认的id是首字母小写之后的接口名,也可以使用 @Respository来设置id） -->
+	<bean id="mapperSource" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 指定Mapper映射器所在的包 -->
+		<property name="basePackage" value="com.ustcinfo.shop.dao"></property>
+	</bean>
+
+	<!-- MongoDB的相关配置 -->
+	
+<!-- 	<bean id="natureRepository" class="com.mongodb.test.spring.service.impl.NatureRepositoryImpl"> -->
+<!-- 			<property name="mongoTemplate" ref="mongoTemplate" /> -->
+<!-- 		</bean> -->
+	
+		<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+			<constructor-arg name="mongo" ref="mongo" />
+			<constructor-arg name="databaseName" value="mydb" />
+		</bean>
+	
+		<!-- Factory bean that creates the Mongo instance -->
+		<bean id="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean">
+			<property name="host" value="192.168.80.185" />
+			<property name="port" value="27017" />
+		</bean>
+	
+		<!-- Activate annotation configured components -->
+		<context:annotation-config />
+	
+		<!-- Scan components for annotations within the configured package -->
+<!-- 		<context:component-scan base-package="com.mongodb.test.spring.entity.*"> -->
+<!-- 			<context:exclude-filter type="annotation" -->
+<!-- 				expression="org.springframework.context.annotation.Configuration" /> -->
+<!-- 		</context:component-scan> -->
+
+
+
+
+
+
+</beans>

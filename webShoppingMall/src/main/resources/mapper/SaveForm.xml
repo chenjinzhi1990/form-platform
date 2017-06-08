@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ustcinfo.shop.dao.SaveForm">
+
+	<!-- 	将表单中的所有组件添加到表单组件数据库表中去 -->
+	<insert id="saveFormAssembly" parameterType="com.ustcinfo.shop.entity.AllFormAssembly">
+		insert into formassembly (formname,formid,assemblyname,singletextname,singletextid,singletextplaceholder,singletextmustenter,whichvalidate,warning,textareaname,textareaid,textareaplaceholder,textareamustenter,comboboxname,comboboxid,comboboxmustenter,comboboxhtml)
+		values(#{formname},#{formid},#{assemblyname},#{singletextname},#{singletextid},#{singletextplaceholder},#{singletextmustenter},#{whichvalidate},#{warning},#{textareaname},#{textareaid},#{textareaplaceholder},#{textareamustenter},#{comboboxname},#{comboboxid},#{comboboxmustenter},#{comboboxhtml})
+
+	</insert>
+<!-- 		保存表单组的信息 -->
+	<insert id="saveFormToFormGroupName" parameterType="com.ustcinfo.shop.entity.FormGroupName">
+		insert into formgroup (formgroupname,formname,formid) values(#{formgroupname},#{formname},#{formid})
+		
+	</insert>
+<!-- 	保存表单的信息 -->
+	<insert id="saveFormMsg" parameterType="com.ustcinfo.shop.entity.FormMsg">
+		insert into form_msg (formgroupname,formname,formid,databasename,formdesc) values(#{formgroupname},#{formname},#{formid},#{databasename},#{formdesc})
+		
+	</insert>
+	
+	
+	
+	
+		<!-- 查找表单中的所有的组件-->
+	<select id="selectFromAssembly" parameterType="java.lang.String"
+		resultType="com.ustcinfo.shop.entity.AllFormAssembly">
+		SELECT * from formassembly  where formname=#{formname} and formid=#{formid}
+
+	</select>
+	 
+<!-- 	 根据分组的名字相应的表单 -->
+	 
+	 <select id="selectFormMsg" parameterType="java.lang.String"
+		resultType="com.ustcinfo.shop.entity.FormMsg">
+		SELECT * from form_msg  where formgroupname=#{formgroupname}
+
+	</select>
+	 
+	 
+	 
+	
+</mapper>
+
+
+
+
+
+
+
+
